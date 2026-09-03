@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvnwavlh71ait"]
+
+[ext_resource type="Script" uid="uid://csklohabg2bfu" path="res://GameManager.gd" id="1_p13vs"]
+
+[node name="Node" type="Control" unique_id=472659571]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p13vs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=951580550]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1249490757]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"

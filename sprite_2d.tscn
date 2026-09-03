@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bum24payt3i72"]
+
+[ext_resource type="Texture2D" uid="uid://dypenj013r6dt" path="res://tiles_packed.png" id="1_mehiu"]
+[ext_resource type="Script" uid="uid://cdsgwlhlbl66v" path="res://spike.gd" id="2_lt4yx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2dwb"]
+size = Vector2(18, 7)
+
+[node name="Spike" type="Sprite2D" unique_id=11069647]
+texture_filter = 1
+texture = ExtResource("1_mehiu")
+region_enabled = true
+region_rect = Rect2(142.97487, 59.868446, 19.678696, 12.160141)
+script = ExtResource("2_lt4yx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=479120101]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=886480794]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_t2dwb")

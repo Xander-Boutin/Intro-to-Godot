@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://n0k2t64f44h3"]
+
+[ext_resource type="Script" uid="uid://ck7vvwxkesq88" path="res://Door.gd" id="1_ne0xv"]
+[ext_resource type="Texture2D" uid="uid://dypenj013r6dt" path="res://tiles_packed.png" id="1_stnp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2dwb"]
+size = Vector2(18, 18)
+
+[node name="Sprite2D" type="Sprite2D" unique_id=2050170466]
+texture = ExtResource("1_stnp0")
+offset = Vector2(9, 0)
+region_enabled = true
+region_rect = Rect2(180, 90, 18, 36)
+script = ExtResource("1_ne0xv")
+
+[node name="DoorArea" type="Area2D" parent="." unique_id=841666487]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea" unique_id=446647178]
+position = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_t2dwb")

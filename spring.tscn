@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cvtftp1gccl06"]
+
+[ext_resource type="Texture2D" uid="uid://dypenj013r6dt" path="res://tiles_packed.png" id="1_boyml"]
+[ext_resource type="Script" uid="uid://lsk01acx1dug" path="res://spring.gd" id="2_hpppm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvkgp"]
+atlas = ExtResource("1_boyml")
+region = Rect2(126, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjfja"]
+atlas = ExtResource("1_boyml")
+region = Rect2(144, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2dwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvkgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjfja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvkgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjfja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvkgp")
+}],
+"loop": 0,
+"name": &"boing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2dwb"]
+size = Vector2(18, 10)
+
+[node name="Spring" type="AnimatedSprite2D" unique_id=497152232]
+sprite_frames = SubResource("SpriteFrames_t2dwb")
+animation = &"boing"
+offset = Vector2(9, 9)
+script = ExtResource("2_hpppm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=723628075]
+position = Vector2(9, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1920529617]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t2dwb")
