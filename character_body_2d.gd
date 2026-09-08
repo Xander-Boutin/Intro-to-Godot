@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+const ACCEL = 5.0
 const JUMP_VELOCITY = -400.0
 var start_position : Vector2
-var jumps = 1
 var big_jump : bool = false
 var current_door
 var current_button
@@ -36,17 +36,17 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = lerp(velocity.x, direction * SPEED, ACCEL * delta)
 		sprite_2d.play("walk")
 		if direction > 0:
 			sprite_2d.flip_h = true
 		elif direction < 0:
 			sprite_2d.flip_h = false
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = lerp(velocity.x, 0.0, (ACCEL * delta) * 2)
 		sprite_2d.play("idle")
 	
-	if global_position.y > 640:
+	if global_position.y > 0:
 		reset_player()
 	move_and_slide()
 

@@ -1,6 +1,8 @@
 extends AnimatedSprite2D
 
 @onready var area_2d: Area2D = $Area2D
+@export var v_spring_strength : int
+@export var h_spring_strength : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,5 +11,6 @@ func _ready() -> void:
 
 func area_entered(body : Node2D) -> void:
 	if body.name == "Player":
-		body.velocity.y = -600
+		body.velocity.y += -v_spring_strength
+		body.velocity.x += h_spring_strength
 		play("boing")

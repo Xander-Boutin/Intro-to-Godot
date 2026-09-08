@@ -42,5 +42,6 @@ animation = &"walk"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1227519318]
 zoom = Vector2(1.5, 1.5)
+limit_bottom = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0

@@ -1,0 +1,121 @@
+Over view
+	how to switch between views
+	file manager
+	scene tree
+
+make a scene
+
+tilemaps
+	add tilemap layer
+	establish new tile set
+		increase tile size
+		add physics layer
+		add tilepack to tile set
+		set size to 18
+		select all tiles we want to modify
+		add physics collision
+
+	animation tile set
+		add the tilepack again but do not establish blocks
+		increase tile size
+		select first frame of animatable tiles
+		select all and increase frame count and adjust speed
+
+	paint a level
+
+Player character
+	set up nodes
+		collision shape
+		animated sprite
+		camera
+	change camera zoom
+	create animations for character and name them
+	add animations
+	add flip_h for directional walking
+	lerp movement and stoping
+	make a reset function for global position Y > 0
+	set start position variable
+	move jump into func _input()
+
+
+
+spikes
+	setup nodes
+		sprite
+		area
+		collisionshape
+	add code and establish signal body entered
+	check if body is player
+	call reset function in player
+
+
+
+door
+	setup nodes
+		sprite
+		area
+		collisionshape
+	export for next level
+	set connections for body entered and exit
+	for both check if player and make characters current door = itself on enter, null on exit
+	function for get_tree().change_scene_to_file()
+	back in player code add current_door variable
+	set up interact with e
+
+
+button
+	same as door
+	export for the removable wall
+	function to remove wall
+
+
+removable wall
+	setup nodes
+		sprite
+		staticbody
+		collisionshape
+
+
+spring
+	setup nodes
+		animated sprite
+		area
+		collisionshape
+		audio2d
+	make exports
+		vertical power
+		horizontal power
+	add code and establish area entered
+	check if player and apply velocity of exports
+		make vertical negative
+	play animation
+	play sound
+
+	
+enemy
+	setup nodes
+		sprite
+		area
+		collisionshape
+	establish variables
+		start_pos
+		time
+	establish exports
+		move speed
+		v and h, speed and hight
+	get start position saved in ready
+	do physics process
+		time += delta
+		var vertical = sin(time * v_bob_speed) / 2
+		global_position.y = start_pos.y + (vertical * -v_bob_height)
+		same for horizontal
+	set up body entered and check if player and reset
+
+
+power mushroom
+	setup nodes
+		sprite
+		area
+		collisionshape
+	add code to check if player and if so activate big jump
+	change player jump script to check for avariable big jump
