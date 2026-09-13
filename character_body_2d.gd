@@ -1,18 +1,42 @@
 extends CharacterBody2D
 
+#here is where we set our variables for our Player
+
+# cosnt is short term for constant and means that no matter what, durring the run time
+# of our game, they will always equal the value we assign them. For the cases below
+# I have used them to set a consistent movement speed, acceleration and jump hight
 const SPEED = 300.0
 const ACCEL = 5.0
 const JUMP_VELOCITY = -400.0
+
+# var is short for varient, which we can use to declare any possible variable we want to use
+# in the game that changes during run time. For the cases below I use it to check where
+# are starting position for the player is located and could be updated during run time
+# if you were to add a check point system in a single level
 var start_position : Vector2
 var big_jump : bool = false
 var current_door
 var current_button
+
+# @onready is a prefix we can add to a variable to fill in the variable information once the
+# scene is ready to run. In this case we want to be able to change the Sprite2D in this scene
+# tree, so we need to wait for everything to be loaded before we can assign it
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
+# This is a built in fuction that all scripts will have. When the scene is ready, the code 
+# inside the function will be ran. In this case when the player character is ready, we set
+# the starting position of the player to the global position
 func _ready() -> void:
 	start_position = global_position
 
+# This is a built in fucntion that all scripts will have. When an input is made by the player,
+# it will set the event variable declared at the top in brackets to what ever input was applied.
+# this could be a anything from keyboard press, mouse click or movement and even controller.
+# it is also important to know that this function is only for single input actions so if you
+# were to hold down a button, it would only register once.
 func _input(event: InputEvent) -> void:
+	# Here we are using one of the most comment things used in game development, if / else statments.
+	# we can use these to check specific variables to see if it is true or false
 	if event.is_action_pressed("jump") and is_on_floor():
 		if big_jump == true:
 			velocity.y = JUMP_VELOCITY * 2
