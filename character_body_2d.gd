@@ -1,58 +1,51 @@
 extends CharacterBody2D
 
-#here is where we set our variables for our Player
+#These are global variables that we set for the CharacterBody2D to use, this being the player.
+#global variables can be called anywhere in this script or pulled from others if needed.
 
-# cosnt is short term for constant and means that no matter what, durring the run time
-# of our game, they will always equal the value we assign them. For the cases below
-# I have used them to set a consistent movement speed, acceleration and jump hight
+#these variables are constant so they can never change
 const SPEED = 300.0
-const ACCEL = 5.0
+const ACCEL = 10.0
 const JUMP_VELOCITY = -400.0
 
-# var is short for varient, which we can use to declare any possible variable we want to use
-# in the game that changes during run time. For the cases below I use it to check where
-# are starting position for the player is located and could be updated during run time
-# if you were to add a check point system in a single level
-var start_position : Vector2
-var big_jump : bool = false
+#these variables are dynamic and can change into any type
 var current_door
 var current_button
 
-# @onready is a prefix we can add to a variable to fill in the variable information once the
-# scene is ready to run. In this case we want to be able to change the Sprite2D in this scene
-# tree, so we need to wait for everything to be loaded before we can assign it
+#these variables are typed so they can only be of the type they are assigned
+var start_position : Vector2 #this can only be a Vector2(x,y)  
+var big_jump : bool = false #this can be only true(1) or false(0)
+
+#@onready variables are assigned when the scene is ready, connecting a node in the scene tree
+#to the node the script is attached to
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
-# This is a built in fuction that all scripts will have. When the scene is ready, the code 
-# inside the function will be ran. In this case when the player character is ready, we set
-# the starting position of the player to the global position
+#hover over _ready() to see what the function does. 
+#any function built into godot will show its description
 func _ready() -> void:
 	start_position = global_position
 
-# This is a built in fucntion that all scripts will have. When an input is made by the player,
-# it will set the event variable declared at the top in brackets to what ever input was applied.
-# this could be a anything from keyboard press, mouse click or movement and even controller.
-# it is also important to know that this function is only for single input actions so if you
-# were to hold down a button, it would only register once.
 func _input(event: InputEvent) -> void:
-	# Here we are using one of the most comment things used in game development, if / else statments.
-	# we can use these to check specific variables to see if it is true or false
+	# here we are checking if the key pressed was jump(spacebar) and they are on the floor
+	# if so we run the code indented
 	if event.is_action_pressed("jump") and is_on_floor():
-		if big_jump == true:
+		#if the variable big_jump is false, the player will jump the normal hight
+		if big_jump == false:
+			velocity.y = JUMP_VELOCITY
+		#else they jump twice as high
+		else:
 			velocity.y = JUMP_VELOCITY * 2
 			big_jump = false
-		else:
-			velocity.y = JUMP_VELOCITY
 	
 	if event.is_action_pressed("interact"):
-		if current_door != null:
+		# if the current_door or current button is null(empty), we skip this code
+		if current_door != null: # != means not equal
 			current_door.change_scene()
 		if current_button != null:
 			current_button.remove_wall()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -67,12 +60,26 @@ func _physics_process(delta: float) -> void:
 		elif direction < 0:
 			sprite_2d.flip_h = false
 	else:
-		velocity.x = lerp(velocity.x, 0.0, (ACCEL * delta) * 2)
+		velocity.x = lerp(velocity.x, 0.0, ACCEL * delta)
 		sprite_2d.play("idle")
 	
 	if global_position.y > 0:
 		reset_player()
+	
 	move_and_slide()
 
 func reset_player() -> void:
 	global_position = start_position
+
+
+
+
+
+
+
+
+
+
+
+
+#hello
