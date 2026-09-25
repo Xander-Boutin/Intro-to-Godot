@@ -4,13 +4,9 @@ extends AnimatedSprite2D
 @export var v_spring_strength : int
 @export var h_spring_strength : int
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	area_2d.body_entered.connect(area_entered)
-	pass # Replace with function body.
-
 func area_entered(body : Node2D) -> void:
-	if body.name == "Player":
+	if body.is_in_group("Player"):
+		# change the players velocity based on spring strength
 		body.velocity.y += -v_spring_strength
 		body.velocity.x += h_spring_strength
-		play("boing")
+		play("boing") # play the animation "boing"
