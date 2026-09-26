@@ -12,8 +12,9 @@ tilemaps
 		add physics layer
 		add tilepack to tile set
 		set size to 18
-		select all tiles we want to modify
 		add physics collision
+		select all tiles we want to modify
+		
 
 	animation tile set
 		add the tilepack again but do not establish blocks
@@ -37,6 +38,22 @@ Player character
 	set start position variable
 	move jump into func _input()
 
+GameManager
+	set up nodes
+		canvas
+			label
+	money variable
+	function for adding money
+	function for updating label
+	ready function to call update label
+	add sound for coin
+
+coin
+	set up nodes
+		animated sprite
+			area2d
+				collisionshape2d
+	function to call gamemanager and add coin
 
 
 spikes
@@ -67,6 +84,7 @@ button
 	same as door
 	export for the removable wall
 	function to remove wall
+		disable area monitoring
 
 
 removable wall

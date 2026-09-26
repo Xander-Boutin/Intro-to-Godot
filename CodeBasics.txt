@@ -1,1 +1,93 @@
-code go here
+Extend (Node type)
+	This is declaring what type of node this code extends from.
+	This can only be applied to nodes of the same type.
+	SO if you have a code that extends Sprite2D, it can only be applied to nodes of Sprite2D
+
+Variables
+	var (name)
+		var is short for variant, variant can be of any type and can change types during 
+		run time if needed.
+	
+	var (name) : (type)
+		typed variables are used to make a variant only of one type. It is best practice
+		to use typed variants to help with debugging and keeping things clean and explicit.
+	
+	different commonly used types are:
+		int: integer, which is a whole number ex. 1,2,3,4,5,... and can go negative
+		float: float is all real numbers ex. 1.245, 10.37 and so on
+		bool: booleans are used for true and false
+		Vector2: takes two values and hold them together ex. Vector2(x,y) Vector2(5,10)
+			can be useful for a location on a 2D grid
+
+	@onready var (name) : (type) = (node path)
+		@onready allowes us to connect to child nodes with in the scene by connecting a path
+		and giving them a name for us to call to.
+
+	@export var (name) : (type)
+		@export allowes us to add a new section in the nodes inspecter which we can then
+		dynamicaly allocate to other nodes, or change variables from inspector instead
+		of in code
+
+	variables can be ether set globaly (near the top of the page and accessed from any function).
+	or we can set them in functions that only they will use and can be accessed from outside.
+
+Functions
+	func (function name)((any variables we want to carry in)) -> (return type):
+		(code goes here)
+
+	as long as the function is not named exactly the same as a already built in function, we can name them
+	what ever we want.
+	
+	we can pass in any amount of variables that the function can use
+	ex. function add_numbers(int : x, int : y) -> int:
+	         return x + y
+	so if we called add_numbers we can pass in two numbers to return one back add_numbers(5,10)	
+
+	for the return type, if we want nothing to be returned we can set the return type to void
+	If we were wanting something returned (like if we have a function that does a calculation and 
+	returns an int) in the return type, we put int.
+
+	as long as the code is indented inside the func, it will execute when called, to get out of a function
+	we can add pass at the bottom or go back on the indent and start a new function
+
+if / else statments
+	we can check for if something is true or false to then execute code or jump to the next check if the
+	first one fails and so on.
+
+	ex. if x > 0:
+		fire this chunk of code
+	    elif x < 0:
+		if the first if fails, we can check for other outcomes and fire this code
+	    else:
+		if all other if/elif fail, we can use this to catch all other outcomes or use it
+		to send an error if the other conditions were supposed to be met
+
+calling variables/functions from other nodes/scripts
+	when we have a node that we want to change a value of or access a function, we can use . to get to them
+	
+	If we are wanting to access a variable in another object or code, we need a connection to that node/object.
+	
+	we can get connection ether through using signals or direct paths with @onready's and @export's
+	
+	we can then access anything accessable for there
+	
+	ex. @onready var player : CharacterBody2D = $Player
+	
+	    player.reset_player()	<- this will call the reset_player() function in the player script
+	    player.velocity.x		<- this accesses the players x velocity that we can then change
+					   by making it equal something else
+
+Signals
+	signals can be established by clicking on a node that you want detecting something and in the top
+	right, clicking on signals and double clicking a signal you want. (we used body entered and body exited
+	from area2D nodes mostly in this workshop)
+
+	signals will have variables it will pass through that we can use to get information like what has entered
+	using if statments.
+
+Groups
+	when clicking on a node and going to the top right, next to signals click the circular arrows and there should be another tab called groups.
+	we can set up nodes to be of a specific group that we can then check to see if it is something specific
+	in the case of the workshop, we set the player to be of group "player" and set that to be global
+	this allowes us in a singal for body entered and exited to check if it is_of_group("player")
+	and if so, it will exicute the code, other wise it will just pass over.
