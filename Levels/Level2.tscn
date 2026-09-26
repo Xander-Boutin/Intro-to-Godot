@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://cei8ysl5gwsjj"]
 
-[ext_resource type="TileSet" uid="uid://rhjkilu386el" path="res://new_tile_set.tres" id="1_506po"]
-[ext_resource type="PackedScene" uid="uid://n0k2t64f44h3" path="res://door_area.tscn" id="2_v115i"]
-[ext_resource type="PackedScene" uid="uid://v4yaow3so4u7" path="res://button.tscn" id="4_v115i"]
-[ext_resource type="PackedScene" uid="uid://buki7lrs4b1sr" path="res://character_body_2d.tscn" id="4_w0h0a"]
-[ext_resource type="PackedScene" uid="uid://dd20a1yksvqd0" path="res://removable_wall.tscn" id="5_jglcl"]
-[ext_resource type="PackedScene" uid="uid://bum24payt3i72" path="res://sprite_2d.tscn" id="6_w0h0a"]
-[ext_resource type="PackedScene" uid="uid://4mr3q1dfrern" path="res://coin.tscn" id="7_m3ha0"]
+[ext_resource type="TileSet" uid="uid://rhjkilu386el" path="res://Textures/new_tile_set.tres" id="1_506po"]
+[ext_resource type="PackedScene" uid="uid://n0k2t64f44h3" path="res://Objects/door_area.tscn" id="2_v115i"]
+[ext_resource type="PackedScene" uid="uid://v4yaow3so4u7" path="res://Objects/button.tscn" id="4_v115i"]
+[ext_resource type="PackedScene" uid="uid://buki7lrs4b1sr" path="res://Characters/character_body_2d.tscn" id="4_w0h0a"]
+[ext_resource type="PackedScene" uid="uid://dd20a1yksvqd0" path="res://Objects/removable_wall.tscn" id="5_jglcl"]
+[ext_resource type="PackedScene" uid="uid://bum24payt3i72" path="res://Objects/spike.tscn" id="6_w0h0a"]
+[ext_resource type="PackedScene" uid="uid://4mr3q1dfrern" path="res://Objects/coin.tscn" id="7_m3ha0"]
 
 [node name="Level2" type="Node2D" unique_id=885258902]
 texture_filter = 1
@@ -20,31 +20,38 @@ tile_set = ExtResource("1_506po")
 [node name="Player" parent="." unique_id=1218129455 instance=ExtResource("4_w0h0a")]
 position = Vector2(108, -216)
 
-[node name="DoorArea" parent="." unique_id=841666487 instance=ExtResource("2_v115i")]
-position = Vector2(486, -216)
-next_level = "uid://bnbnyjjmjygjo"
+[node name="Coins" type="Node2D" parent="." unique_id=697872847]
 
-[node name="button" parent="." unique_id=1881110311 node_paths=PackedStringArray("removable_wall") instance=ExtResource("4_v115i")]
-position = Vector2(288, -36)
-removable_wall = NodePath("../removable wall")
-
-[node name="removable wall" parent="." unique_id=111248669 instance=ExtResource("5_jglcl")]
-position = Vector2(468, -180)
-
-[node name="Spike" parent="." unique_id=11069647 instance=ExtResource("6_w0h0a")]
-position = Vector2(576, -144)
-
-[node name="Coin" parent="." unique_id=1203442039 instance=ExtResource("7_m3ha0")]
+[node name="Coin" parent="Coins" unique_id=1203442039 instance=ExtResource("7_m3ha0")]
 position = Vector2(180, -234)
 
-[node name="Coin2" parent="." unique_id=1606782853 instance=ExtResource("7_m3ha0")]
+[node name="Coin2" parent="Coins" unique_id=1606782853 instance=ExtResource("7_m3ha0")]
 position = Vector2(36, -216)
 
-[node name="Coin3" parent="." unique_id=261313343 instance=ExtResource("7_m3ha0")]
+[node name="Coin3" parent="Coins" unique_id=261313343 instance=ExtResource("7_m3ha0")]
 position = Vector2(288, -180)
 
-[node name="Coin4" parent="." unique_id=591091645 instance=ExtResource("7_m3ha0")]
+[node name="Coin4" parent="Coins" unique_id=591091645 instance=ExtResource("7_m3ha0")]
 position = Vector2(378, -126)
 
-[node name="Coin5" parent="." unique_id=509614049 instance=ExtResource("7_m3ha0")]
+[node name="Coin5" parent="Coins" unique_id=509614049 instance=ExtResource("7_m3ha0")]
 position = Vector2(576, -252)
+
+[node name="Danger" type="Node2D" parent="." unique_id=1630042472]
+
+[node name="Spike" parent="Danger" unique_id=11069647 instance=ExtResource("6_w0h0a")]
+position = Vector2(576, -144)
+
+[node name="Objects" type="Node2D" parent="." unique_id=970628797]
+position = Vector2(576, -144)
+
+[node name="DoorArea" parent="Objects" unique_id=841666487 instance=ExtResource("2_v115i")]
+position = Vector2(-90, -72)
+next_level = "uid://bnbnyjjmjygjo"
+
+[node name="button" parent="Objects" unique_id=1881110311 node_paths=PackedStringArray("removable_wall") instance=ExtResource("4_v115i")]
+position = Vector2(-288, 108)
+removable_wall = NodePath("../removable wall")
+
+[node name="removable wall" parent="Objects" unique_id=111248669 instance=ExtResource("5_jglcl")]
+position = Vector2(-108, -36)

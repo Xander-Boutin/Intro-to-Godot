@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://cr34fcctw1jb2"]
 
-[ext_resource type="TileSet" uid="uid://rhjkilu386el" path="res://new_tile_set.tres" id="2_dwyiq"]
-[ext_resource type="PackedScene" uid="uid://buki7lrs4b1sr" path="res://character_body_2d.tscn" id="3_dn5ey"]
-[ext_resource type="PackedScene" uid="uid://n0k2t64f44h3" path="res://door_area.tscn" id="4_nutv8"]
-[ext_resource type="PackedScene" uid="uid://qixuyci417u4" path="res://enemy.tscn" id="5_05pb0"]
-[ext_resource type="PackedScene" uid="uid://bum24payt3i72" path="res://sprite_2d.tscn" id="6_05pb0"]
-[ext_resource type="PackedScene" uid="uid://cvtftp1gccl06" path="res://spring.tscn" id="6_dl8mf"]
-[ext_resource type="PackedScene" uid="uid://4mr3q1dfrern" path="res://coin.tscn" id="7_dl8mf"]
+[ext_resource type="TileSet" uid="uid://rhjkilu386el" path="res://Textures/new_tile_set.tres" id="2_dwyiq"]
+[ext_resource type="PackedScene" uid="uid://buki7lrs4b1sr" path="res://Characters/character_body_2d.tscn" id="3_dn5ey"]
+[ext_resource type="PackedScene" uid="uid://n0k2t64f44h3" path="res://Objects/door_area.tscn" id="4_nutv8"]
+[ext_resource type="PackedScene" uid="uid://qixuyci417u4" path="res://Characters/enemy.tscn" id="5_05pb0"]
+[ext_resource type="PackedScene" uid="uid://bum24payt3i72" path="res://Objects/spike.tscn" id="6_05pb0"]
+[ext_resource type="PackedScene" uid="uid://cvtftp1gccl06" path="res://Objects/spring.tscn" id="6_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://4mr3q1dfrern" path="res://Objects/coin.tscn" id="7_dl8mf"]
 
 [node name="Level1" type="Node2D" unique_id=1725068037]
 

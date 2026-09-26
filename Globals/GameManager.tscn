@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bvnwavlh71ait"]
+
+[ext_resource type="Script" uid="uid://csklohabg2bfu" path="res://Globals/GameManager.gd" id="1_p13vs"]
+[ext_resource type="AudioStream" uid="uid://ygerdl8urm5x" path="res://Sounds/driken5482-retro-coin-4-236671.mp3" id="2_aelf4"]
+[ext_resource type="AudioStream" uid="uid://c6i8uy0trc72m" path="res://Sounds/universfield-cartoon-spring-229137.mp3" id="3_au0an"]
+[ext_resource type="AudioStream" uid="uid://d1oj0mjww38iu" path="res://Sounds/freesound_community-hurt_c_08-102842.mp3" id="4_108xg"]
+[ext_resource type="AudioStream" uid="uid://dfpk47jf5uy3h" path="res://Sounds/freesound_community-toy-button-105724.mp3" id="5_dxunw"]
+[ext_resource type="AudioStream" uid="uid://b3u61ge83vbrh" path="res://Sounds/soundshelfstudio-ui-hyperdrive-ready-ping-537581.mp3" id="6_pdxvr"]
+
+[node name="Node" type="Control" unique_id=472659571]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p13vs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=951580550]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1249490757]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"
+
+[node name="Coin" type="AudioStreamPlayer" parent="." unique_id=46603024]
+stream = ExtResource("2_aelf4")
+
+[node name="Spring" type="AudioStreamPlayer" parent="." unique_id=1236593536]
+stream = ExtResource("3_au0an")
+
+[node name="Damage" type="AudioStreamPlayer" parent="." unique_id=119134293]
+stream = ExtResource("4_108xg")
+max_polyphony = 2
+
+[node name="Button" type="AudioStreamPlayer" parent="." unique_id=266049801]
+stream = ExtResource("5_dxunw")
+max_polyphony = 2
+
+[node name="Door" type="AudioStreamPlayer" parent="." unique_id=1093228336]
+stream = ExtResource("6_pdxvr")
